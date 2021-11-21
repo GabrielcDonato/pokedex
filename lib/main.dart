@@ -1,10 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:pokedexflutter/common/repositories/pokemon_repository.dart';
+import 'package:pokedexflutter/features/pokedex/route.dart';
 
-import 'features/home/container/home_container.dart';
+import 'common/repositories/pokemon_repository.dart';
 
-// entre () sao parametros
 void main() {
   runApp(MyApp());
 }
@@ -13,11 +12,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Pokedex',
+      title: 'Pokedex 2K21',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
-      home: HomeContainer(
+      home: PokedexRoute(
         repository: PokemonRepository(
           dio: Dio(),
         ),
