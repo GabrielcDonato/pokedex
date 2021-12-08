@@ -10,8 +10,27 @@ class TypeWidget extends StatelessWidget {
   final String name;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text(name),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 4),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.2),
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(6),
+          child: Text(
+            name,
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 12,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
+
+// FontWeight é a expessura

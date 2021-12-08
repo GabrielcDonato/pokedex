@@ -13,22 +13,51 @@ class PokemonItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        children: [
-          Text(pokemon.name),
-          Row(
-            children: [
-              Column(
-                children: pokemon.type
-                    .map((e) => TypeWidget(
-                          name: e,
-                        ))
-                    .toList(),
-              ),
-              Image.network(pokemon.image),
-            ],
-          )
-        ],
+      decoration: BoxDecoration(
+        color: pokemon.baseColor!.withOpacity(0.8),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                  child: Text(
+                    pokemon.name,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+                Text(pokemon.num),
+              ],
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: pokemon.type
+                      .map((e) => TypeWidget(
+                            name: e,
+                          ))
+                      .toList(),
+                ),
+                Flexible(
+                  child: Image.network(pokemon.image),
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
