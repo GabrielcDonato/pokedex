@@ -7,14 +7,12 @@ import 'package:pokedexflutter/common/widgets/po_loading.dart';
 import 'package:pokedexflutter/features/pokedex/screens/details/pages/detail_page.dart';
 
 class DetailArguments {
-  DetailArguments({required this.name});
-  final String name;
+  DetailArguments({required this.pokemon});
+  final Pokemon pokemon;
 }
 
 class DetailContainer extends StatelessWidget {
-  const DetailContainer(
-      {Key? key, required this.repository, required this.arguments})
-      : super(key: key);
+  const DetailContainer({Key? key, required this.repository, required this.arguments}) : super(key: key);
   final IPokemonRepository repository;
   final DetailArguments arguments;
   @override
@@ -26,9 +24,8 @@ class DetailContainer extends StatelessWidget {
           return PoLoading();
         }
 
-        if (snapshot.connectionState == ConnectionState.done &&
-            snapshot.hasData) {
-          return DetailPage(name: arguments.name, list: snapshot.data!);
+        if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
+          return DetailPage(pokemon: arguments.pokemon, list: snapshot.data!);
         }
 
         if (snapshot.hasError) {
