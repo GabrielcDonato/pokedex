@@ -1,31 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:pokedexflutter/common/models/pokemon.dart';
 import 'package:pokedexflutter/features/pokedex/screens/details/container/detail_container.dart';
 import 'package:pokedexflutter/features/pokedex/screens/home/pages/widgets/type_widget.dart';
-import '../../../../../../common/models/pokemon.dart';
 
 class PokemonItemWidget extends StatelessWidget {
   const PokemonItemWidget({
     Key? key,
     required this.pokemon,
     required this.onTap,
+    required this.index,
   }) : super(key: key);
 
   final Pokemon pokemon;
   final Function(String, DetailArguments) onTap;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => onTap('/details', DetailArguments(pokemon: pokemon)),
+      onTap: () => onTap(
+        '/details',
+        DetailArguments(pokemon: pokemon, index: index),
+      ),
       child: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
-              color: pokemon.baseColor!.withOpacity(0.8),
-              borderRadius: BorderRadius.circular(16),
-            ),
+            decoration: BoxDecoration(color: pokemon.baseColor!.withOpacity(0.8), borderRadius: BorderRadius.circular(16)),
             child: Padding(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -36,20 +38,12 @@ class PokemonItemWidget extends StatelessWidget {
                       Flexible(
                         child: Text(
                           pokemon.name,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
+                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
                         ),
                       ),
                       Text(
                         '#${pokemon.num}',
-                        style: TextStyle(
-                          color: Colors.black.withOpacity(0.4),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
-                        ),
+                        style: TextStyle(color: Colors.black.withOpacity(0.4), fontWeight: FontWeight.bold, fontSize: 14),
                       ),
                     ],
                   ),
@@ -66,11 +60,10 @@ class PokemonItemWidget extends StatelessWidget {
                             .toList(),
                       ),
                       Flexible(
-                        child: Container(
-                          height: 100,
-                          width: 100,
-                        ),
-                      ),
+                          child: Container(
+                        height: 100,
+                        width: 100,
+                      )),
                     ],
                   )
                 ],
@@ -82,6 +75,7 @@ class PokemonItemWidget extends StatelessWidget {
             right: 2,
             child: Image.network(
               pokemon.image,
+              height: 120,
             ),
           ),
         ],

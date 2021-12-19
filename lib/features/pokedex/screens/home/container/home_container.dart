@@ -24,8 +24,7 @@ class HomeContainer extends StatelessWidget {
           return HomeLoading();
         }
 
-        if (snapshot.connectionState == ConnectionState.done &&
-            snapshot.hasData) {
+        if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
           return HomePage(
             list: snapshot.data!,
             onItemTap: onItemTap,

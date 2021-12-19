@@ -20,7 +20,8 @@ class Pokemon {
   }
 
   Color? get baseColor => _color(type: type[0]);
-  String get image => 'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/$num.png';
+  String get image =>
+      'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/$num.png';
   Pokemon({
     required this.name,
     required this.type,

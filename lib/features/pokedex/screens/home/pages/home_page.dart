@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pokedexflutter/common/models/pokemon.dart';
 import 'package:pokedexflutter/features/pokedex/screens/details/container/detail_container.dart';
-import 'package:pokedexflutter/features/pokedex/screens/home/pages/widgets/pokemon_item_widget.dart';
+
+import 'widgets/pokemon_item_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key, required this.list, required this.onItemTap}) : super(key: key);
@@ -18,10 +19,7 @@ class HomePage extends StatelessWidget {
           padding: const EdgeInsets.only(left: 10),
           child: Text(
             'Pokedex',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 26,
-            ),
+            style: TextStyle(color: Colors.black, fontSize: 26),
           ),
         ),
         actions: [
@@ -44,10 +42,13 @@ class HomePage extends StatelessWidget {
           crossAxisSpacing: 12,
           mainAxisSpacing: 12,
           children: list
-              .map((e) => PokemonItemWidget(
-                    pokemon: e,
-                    onTap: onItemTap,
-                  ))
+              .map(
+                (e) => PokemonItemWidget(
+                  pokemon: e,
+                  onTap: onItemTap,
+                  index: list.indexOf(e),
+                ),
+              )
               .toList(),
         ),
       ),

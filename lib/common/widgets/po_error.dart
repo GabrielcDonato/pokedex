@@ -7,7 +7,7 @@ class PoError extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(error ?? 'Erro durante a operacao'),
+        child: Text(error ?? 'Erro durante a operação'),
       ),
     );
   }
